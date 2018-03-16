@@ -1,0 +1,21 @@
+
+
+.jumbotron {
+    background-color: #0cd19c;
+    color: #ffffff;
+  }
+
+  .navbar {
+    border-bottom: solid 3px white;
+    margin-bottom: 0px !important;
+    background-color: #0cd19c;
+    color: white;
+}
+a
+{
+  color: white !important;
+}
+
+.panel-default {
+     border-color: transparent !important;
+}

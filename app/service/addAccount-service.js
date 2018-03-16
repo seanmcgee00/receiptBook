@@ -20,7 +20,7 @@
 
     }
 
-    angular.module("bankingApp").service("addAccountService", ['accountDal','$log', AddAccountService]);
+    angular.module("receiptBookApp").service("addAccountService", ['accountDal','$log', AddAccountService]);
 
 }());/**
  *

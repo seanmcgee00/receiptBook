@@ -1,7 +1,6 @@
 <div class="panel panel-default" ng-controller="dashboardController as dashboardCtrl">
 
-
-								<form name="loginForm" action="http://localhost:5000/login" method="POST">
+								<form name="loginForm">
 									 <div class="form-group">
 											<label for="inputEmail">Email address</label>
 											<input type="email" ng-model="dashboardCtrl.inputEmail" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="inputEmail"/>
@@ -9,12 +8,10 @@
 									 </div>
 									<div class="form-group">
 											<label for="inputPassword">Password</label>
-											<input type="text" ng-model="dashboardCtrl.inputPassword" class="form-control" id="inputPassword" placeholder="Password" name="inputPassword"/>
+											<input type="password" ng-model="dashboardCtrl.inputPassword" class="form-control" id="inputPassword" placeholder="Password" name="inputPassword"/>
 									</div>
 
-									<button id="loginButton" type="button" class="btn btn-primary"  ng-click="dashboardCtrl.myLogin()">Submit</button>
-									<button id="loginButton" type="submit" class="btn btn-primary">Submit2</button>
+									<button id="loginButton" type="button" class="btn"  ng-click="dashboardCtrl.myLogin()">Submit</button>
 								</form>
 										{{dashboardCtrl.checklogin}}
-						
 </div>

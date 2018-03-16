@@ -72,5 +72,5 @@
 
         $log.debug("DAL Instantiated");
     }
-    angular.module("bankingApp").service("dal", ["$http", "$q", "$log", Dal]);
+    angular.module("receiptBookApp").service("dal", ["$http", "$q", "$log", Dal]);
 }());

@@ -7,9 +7,9 @@
         $stateProvider.state("dashboard", {
             url: "/dashboard",
             templateUrl: "app/feature/dashboard/dashboard.html"
-        }).state("inbox", {
-                url: "/inbox",
-                templateUrl: "app/feature/inbox/inbox.html"
+        }).state("account", {
+                url: "/account",
+                templateUrl: "app/feature/account/account.html"
         })
 
     });

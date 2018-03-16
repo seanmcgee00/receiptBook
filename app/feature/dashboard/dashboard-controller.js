@@ -3,7 +3,6 @@
     var DashboardController =  function($http,$cookies,$state) {
 
     var vm = this;
-
     vm.myLogin=function(){
       var postData={inputEmail:vm.inputEmail,inputPassword:vm.inputPassword};
 
@@ -19,7 +18,7 @@
                                       $cookies.put('username',results.data.username);
                                       $cookies.put('login',results.data.loggedIN);
                                       console.log($cookies.get('username'));
-                                      $state.go("inbox");
+                                    //  $state.go("account");
                                     }
                                     else {
                                       vm.checklogin=results.data.message;

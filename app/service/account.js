@@ -25,8 +25,8 @@
 
 
 
-    
 
-    angular.module("bankingApp").service("accountService", ['accountDal','$log', AccountService]);
+
+    angular.module("receiptBookApp").service("accountService", ['accountDal','$log', AccountService]);
 
 }());

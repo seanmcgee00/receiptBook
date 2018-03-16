@@ -13,5 +13,5 @@
 
     }
 
-    angular.module("bankingApp").service("accountDal", ["dal","$log", AccountDal]);
+    angular.module("receiptBookApp").service("accountDal", ["dal","$log", AccountDal]);
 }());

@@ -7,7 +7,7 @@
 <body>
 
 
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar" ng-controller="indexController as indexCtrl">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -23,13 +23,16 @@
 
         </ul>
         <ul id="logout" class="nav navbar-nav navbar-right">
-        <li><span id='welcome'></span></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        <li><a ng-show="indexCtrl.login" id='welcome'>Welcome {{indexCtrl.user}} </a></li>
+          <li ng-show="indexCtrl.login"><a href="#" ng-click="indexCtrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
       </div>
     </div>
   </nav>
-
+  <div class="jumbotron text-center">
+      <h1>The Receipt Book</h1>
+      <p>Your complete transacion memory bank</p>
+  </div>
 
   <div class="container-fluid text-center">
     <div class="row content">
@@ -53,6 +56,9 @@
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app/index.css">
+  <link rel="stylesheet" href="app/feature/dashboard/dashboard.css">
+  <link rel="stylesheet" href="app/feature/account/account.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
@@ -63,10 +69,10 @@
     <script src="app/app.js"></script>
     <script src="app/app-state-manager.js"></script>
     <script src="app/feature/dashboard/dashboard-controller.js"></script>
-    <script src="app/feature/inbox/inbox-controller.js"></script>
-    <script src="app/feature/bbva/bbva-controller.js"></script>
-    <script src="app/feature/google/google-controller.js"></script>
-    <script src="app/service/addAccount-service.js"></script>
+    <script src="app/feature/account/account-controller.js"></script>
+    <script src="app/index-controller.js"></script>
+
+
     <script src="app/service/dal/dal.js"></script>
 	  <script src="app/service/dal/account.js"></script>
 
