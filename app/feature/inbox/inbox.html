@@ -1,0 +1,120 @@
+<div class="panel panel-default" ng-controller="inboxController as inboxCtrl">
+<h3>Hello {{inboxCtrl.user}}</h3>
+<div>
+  <div id="inboxHolder">
+    <table id="inbox" class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>Subject</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="inboxFeilds">
+      <tr ng-repeat="email in inboxCtrl.emails">
+          <td ng-click="inboxCtrl.showMessage(email.email_id)" data-toggle="modal" data-target="#showMessage"><i ng-show="email.new_old=='N'" class="material-icons">markunread</i><i class="material-icons" ng-show="email.new_old=='O'">drafts</i>{{email.sent_from}}</td>
+          <td>{{email.subject}}</td>
+          <td>{{email.send_date  | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+
+   </div>
+
+
+</div>
+
+<!-- ----------Message Modal----------------- -->
+<div class="modal fade" id="showMessage" role="dialog">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">{{inboxCtrl.subject}}</h4>
+  </div>
+  <div class="modal-body">
+    <form name="emailForm">
+       <div class="form-group">
+          <label for="email_from">FROM</label>
+          <input type="text" ng-model="inboxCtrl.email_from" class="form-control" id="email_from"  name="inputFrom" placeholder="{{inboxCtrl.sent_from}}" readonly></input>
+       </div>
+       <div class="form-group">
+          <label for="email_date">Date</label>
+          <input type="text" ng-model="inboxCtrl.email_date" class="form-control" id="email_date"  name="inputDate"placeholder="{{inboxCtrl.send_date | date:'MM/dd/yyyy h:mma'}}" readonly></input>
+       </div>
+
+       <div class="form-group">
+          <label for="email_from">Message</label>
+          <textarea rows="6" ng-model="inboxCtrl.email_body" class="form-control" id="email_from"  name="inputFrom"readonly placeholder="{{inboxCtrl.message_body}}"></textarea>
+       </div>
+
+
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#replyMessage">Reply</button>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+<!-- ----------Replay Modal----------------- -->
+<div class="modal fade" id="replyMessage" role="dialog">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Re:{{inboxCtrl.subject}}</h4>
+  </div>
+  <div class="modal-body">
+    <form name="emailTo">
+       <div class="form-group">
+          <label for="email_to">To</label>
+          <input type="text" ng-model="inboxCtrl.email_to" class="form-control" id="email_to"  name="inputTo" placeholder="{{inboxCtrl.sent_from}}"  value="{{inboxCtrl.sent_from}}"readonly></input>
+       </div>
+
+       <div class="form-group">
+          <label for="email_from">FROM</label>
+          <input type="text" ng-model="inboxCtrl.email_from" class="form-control" id="email_from"  name="inputFrom" placeholder="{{inboxCtrl.sent_to}}" value="{{inboxCtrl.sent_from}}" readonly></input>
+       </div>
+
+       <div class="form-group">
+          <label for="email_sublect">Subject</label>
+          <input type="text" ng-model="inboxCtrl.email_subject" class="form-control" id="email_subject"  name="inputSubject" placeholder="RE:{{inboxCtrl.subject}}" value="RE:{{inboxCtrl.subject}}" ></input>
+       </div>
+
+
+       <div class="form-group">
+          <label for="email_Message">Message</label>
+          <textarea rows="8" ng-model="inboxCtrl.email_body" class="form-control" id="email_Message"  name="inputMessage" placeholder="Original Message::{{inboxCtrl.send_date | date:'MM/dd/yyyy h:mma'}}<br> {{inboxCtrl.message_body}}"  value="Original Message::{{inboxCtrl.send_date | date:'MM/dd/yyyy h:mma'}}<br> {{inboxCtrl.message_body}}"></textarea>
+       </div>
+
+
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="inboxCtrl.replyMessage()">Send</button>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
