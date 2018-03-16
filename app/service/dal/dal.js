@@ -18,7 +18,7 @@
                     return deferred.promise;
                 },
 
-                POST: function (apiPath, itemToSave) {
+                POST: function (apiPath, postData) {
                     var deferred = $q.defer();
                     $http(
                         {
@@ -28,7 +28,7 @@
                                 "Accept": "application/json, text/plain, */*",
                                 "Content-Type": "application/x-www-form-urlencoded"
                             },
-                            data: JSON.stringify(itemToSave)
+                            data: JSON.stringify(postData)
                         }
                     ).then(function (results) {
                             deferred.resolve(results.data);

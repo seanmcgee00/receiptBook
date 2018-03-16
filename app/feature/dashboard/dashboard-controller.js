@@ -1,34 +1,28 @@
 (function() {
 
-    var DashboardController =  function($http,$cookies,$state) {
+    var DashboardController =  function($http,$cookies,$state,loginService) {
 
     var vm = this;
     vm.myLogin=function(){
       var postData={inputEmail:vm.inputEmail,inputPassword:vm.inputPassword};
+      loginService.login(postData).then(function (results) {
+      console.log("loginService function called in dashboard");
 
-                        $http({
-                                method: 'POST',
-                                url: 'http://localhost:5000/login',
-                                data: JSON.stringify(postData),
-                                headers: {'Accept': 'application/json, text/plain, */*','Content-Type': 'application/x-www-form-urlencoded'}
-                            }).then(function (results) {
-
-                                    if(results.data.loggedIN=="valid")
-                                    {
-                                      $cookies.put('username',results.data.username);
-                                      $cookies.put('login',results.data.loggedIN);
-                                      console.log($cookies.get('username'));
-                                    //  $state.go("account");
-                                    }
-                                    else {
-                                      vm.checklogin=results.data.message;
-                                    }
+                  if(results.loggedIN=="valid")
+                  {
+                    $cookies.put('username',results.username);
+                    $cookies.put('login',results.loggedIN);
+                    console.log($cookies.get('username'));
+                  //  $state.go("account");
+                  }
+                  else {
+                    vm.checklogin=results.message;
+                  }
 
 
-                                }, function (e) {
-                                    console.log(e);
-                                });
-
+              }, function (e) {
+                  console.log(e);
+              });
 
     }
 
@@ -37,5 +31,5 @@
 
 
 
-    angular.module('receiptBookApp').controller('dashboardController', ['$http','$cookies','$state',DashboardController]);
+    angular.module('receiptBookApp').controller('dashboardController', ['$http','$cookies','$state','loginService',DashboardController]);
 }());
