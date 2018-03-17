@@ -5,17 +5,23 @@
 
     function AccountService (accountDal,$log) {
 
+        this.getCustomer=function(){
+          $log.log("AccountService getCustoemr");
+        	return accountDal.getCustomer();
+        };
+
         this.getAccounts = function()
         {
         	$log.log("AccountService getAccounts");
         	return accountDal.getAccounts();
         };
 
-        this.removeAccounts = function(account)
+        this.getPayments = function(id)
         {
-        	$log.log("AccountService removeAccounts");
-        	return accountDal.deleteAccount(account);
+        	$log.log("AccountService getAccounts");
+        	return accountDal.getPayments(id);
         };
+
 
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="receiptBookApp">
+<html lang="en" ng-app="receiptBookApp"  ng-controller="indexController as indexCtrl">
 <head>
     <meta charset="UTF-8">
     <title>Banking Application</title>
@@ -7,14 +7,9 @@
 <body>
 
 
-  <nav class="navbar" ng-controller="indexController as indexCtrl">
+  <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
         <a class="navbar-brand" href="#">Logo</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
@@ -30,8 +25,7 @@
     </div>
   </nav>
   <div class="jumbotron text-center">
-      <h1>The Receipt Book</h1>
-      <p>Your complete transacion memory bank</p>
+      <h1>The Receipt Book</h1><p ng-show="indexCtrl.intro">Your complete transacion memory bank</p>
   </div>
 
   <div class="container-fluid text-center">

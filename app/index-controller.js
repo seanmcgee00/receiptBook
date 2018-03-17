@@ -1,13 +1,18 @@
 (function() {
 
-    var IndexController =  function($http,$cookies,$state) {
+    var IndexController =  function($http,$cookies,$state,$scope) {
 
     var vm = this;
     vm.login=false;
-    checkforlogin();
+    vm.intro=true;
 
 
-
+    $scope.$on('login', function(event, data) {
+       checkforlogin();
+     });
+     $scope.$on('account', function(event, data) {
+       vm.intro=false;
+      });
 
 
     function checkforlogin()
@@ -35,5 +40,5 @@
 
   };
 
-    angular.module('receiptBookApp').controller('indexController', ['$http','$cookies','$state',IndexController]);
+    angular.module('receiptBookApp').controller('indexController', ['$http','$cookies','$state','$scope',IndexController]);
 }());

@@ -1,22 +1,24 @@
 (function() {
 
-    var DashboardController =  function($http,$cookies,$state,loginService) {
+    var DashboardController =  function($http,$cookies,$state,loginService,$scope) {
 
     var vm = this;
     vm.myLogin=function(){
       var postData={inputEmail:vm.inputEmail,inputPassword:vm.inputPassword};
       loginService.login(postData).then(function (results) {
-      console.log("loginService function called in dashboard");
+      console.log(results);
 
                   if(results.loggedIN=="valid")
                   {
                     $cookies.put('username',results.username);
                     $cookies.put('login',results.loggedIN);
                     console.log($cookies.get('username'));
-                  //  $state.go("account");
+                     $scope.$emit('login', 'complete');
+                     $state.go("account");
                   }
                   else {
-                    vm.checklogin=results.message;
+
+                    vm.checklogin=results.outputMessage;
                   }
 
 
@@ -31,5 +33,5 @@
 
 
 
-    angular.module('receiptBookApp').controller('dashboardController', ['$http','$cookies','$state','loginService',DashboardController]);
+    angular.module('receiptBookApp').controller('dashboardController', ['$http','$cookies','$state','loginService','$scope',DashboardController]);
 }());

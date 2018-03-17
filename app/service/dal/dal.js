@@ -10,7 +10,17 @@
                 GET: function (apiPath) {
                     var deferred = $q.defer();
                     $log.log("Dal GET run")
-                    $http.get(apiPath).then(function (result) {
+                    $http(
+                        {
+                            method: "get",
+                            url: apiPath,
+                            headers: {
+                                "Accept": "application/json, text/plain, */*",
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                          
+                        }
+                    ).then(function (result) {
                         deferred.resolve(result.data);
                     }, function (e) {
                         deferred.reject(e);
