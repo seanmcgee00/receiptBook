@@ -1,4 +1,16 @@
 li:hover{
   background-color: #0a946f;
-  
+
+}
+
+.activeAccount
+{
+   text-decoration: underline white;
+   font-weight: bold;
+}
+
+.inactiveAccount
+{
+   text-decoration: underline white;
+   font-weight: bold;
 }

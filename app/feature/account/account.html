@@ -4,13 +4,14 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li ng-repeat="account in accountCtrl.accounts"><a href="#" ng-click="accountCtrl.viewAccount(account.description,account.currency,account.balance,account.id,account.number)">Account:{{account.number}} {{account.type}}</a></li>
+      <li ng-repeat="account in accountCtrl.accounts" "><a href="#" ng-click="accountCtrl.viewAccount(account)">Account:{{account.number}} {{account.type}}</a></li>
     </ul>
   </div>
 </nav>
 <div ng-show="accountCtrl.showAccount">
-  <h6><small>Description:</small>{{accountCtrl.accountDescription}}</h6>
-  <h6><small>Balance:</small>{{accountCtrl.accountBalance}}</h6>
+  <h5><small>Account:</small>{{accountCtrl.accountDetails}}</h5>
+  <h5><small>Description:</small>{{accountCtrl.accountDescription}}</h5>
+  <h5><small>Balance:</small>{{accountCtrl.accountBalance}}</h5>
   <table class="table table-striped table-condensed">
 				<thead>
 					<tr>
@@ -28,8 +29,7 @@
 							class="btn btn-primary" type="button"
 							ng-click="accountCtrl.setPayment(payment)"  data-toggle="modal"
 							data-target="#paymentModal">
-							<i class="material-icons">add</i>
-							<p>Show Details</p>
+							Show Details
 						</button></td>
 				</tr>
 
