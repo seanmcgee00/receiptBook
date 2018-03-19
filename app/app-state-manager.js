@@ -10,6 +10,9 @@
         }).state("account", {
                 url: "/account",
                 templateUrl: "app/feature/account/account.html"
+        }).state("about", {
+                url: "/about",
+                templateUrl: "app/feature/about/about.html"
         })
 
     });

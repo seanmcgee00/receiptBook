@@ -37,9 +37,6 @@
 
 
 
-
-
-
 </div>
 
 
@@ -52,14 +49,51 @@
 				</div>
 				<div class="modal-body">
 					<p>Payment details</p>
-          <span>{{accountCtrl.payment.description}}</span>
+          <p>Amount:{{accountCtrl.payment.amount}}</p>
+          <p>Description:{{accountCtrl.payment.description}}</p>
+          <p>Date:{{accountCtrl.payment.operationDate}}</p>
+          <p>Transaction Fee: {{accountCtrl.payment.fee.amount}} {{accountCtrl.payment.fee.currency}}</p>
+          <p>From Account:{{accountCtrl.payment.originAccount.name}} AccNumber:{{accountCtrl.payment.originAccount.number}}</p>
+          <p>To Account:{{accountCtrl.payment.remoteAccount.name}} AccNumber:{{accountCtrl.payment.remoteAccount.number}}</p>
 				</div>
+        <img ng-show="accountCtrl.receiptImage" id="receiptThumbnail"src="accountCtrl.receiptImage">
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-warning" data-dismiss="modal">Add A Receipt</button>
+					<button type="button" class="btn btn-warning" data-toggle="modal"
+          data-target="#addReceiptModal">Add A Receipt</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
+  <div class="modal fade" id="addReceiptModal" role="dialog" ng-controller="accountReceiptController as receiptCtrl">
+      <div class="modal-dialog modal-sm">
+        <div id="addReceiptModal" class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Receipt Uplaod</h4>
+          </div>
+          <div class="modal-body">
+            <p>Select a receipt</p>
+            <input type="file" id="input" name="receiptpic"></input><br>
+            <canvas id="canvas"></canvas>
+
+                <div id = "outpt">
+                </div>
+                <div id="resulting">
+                </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-warning"  ng-click="receiptCtrl.uploadReceipt(accountCtrl.payment.id)">Upload A Receipt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 
 </div>

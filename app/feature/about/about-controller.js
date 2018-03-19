@@ -1,6 +1,6 @@
 (function() {
 
-    var DashboardController =  function($http,$cookies,$state,loginService,$scope) {
+    var AboutController =  function($http,$cookies,$state,loginService,$scope) {
 
     var vm = this;
     vm.myLogin=function(){
@@ -23,7 +23,6 @@
                     vm.checklogin=results.outputMessage;
                   }
 
-
               }, function (e) {
                   console.log(e);
               });
@@ -35,5 +34,5 @@
 
 
 
-    angular.module('receiptBookApp').controller('dashboardController', ['$http','$cookies','$state','loginService','$scope',DashboardController]);
+    angular.module('receiptBookApp').controller('aboutController', ['$http','$cookies','$state','loginService','$scope',AboutController]);
 }());

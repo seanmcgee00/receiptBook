@@ -3,12 +3,14 @@
     var AccountController =  function($http,$cookies,$state,$scope,accountService) {
 
     var vm = this;
+  
     $scope.$emit('account', 'on account page');
     vm.showAccount=false;
     vm.viewAccount=function(account){getAccountInfo(account)};
 
 
     vm.setPayment=function(payment){
+      console.log(payment);
       vm.payment=payment;
     };
 
@@ -20,7 +22,7 @@
             });
 
    accountService.getAccounts().then(function (results) {
-        console.log(results);
+      //  console.log(results);
         vm.accounts=results.data.accounts;
         vm.accountONE=vm.accounts[0];
         getAccountInfo(vm.accountONE);
