@@ -30,10 +30,9 @@
     $cookies.remove('username');
     $state.go("dashboard");
     vm.login=false;
-
     };
 
-
+  
 
 
 

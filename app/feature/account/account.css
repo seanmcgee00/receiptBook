@@ -14,3 +14,13 @@ li:hover{
    text-decoration: underline white;
    font-weight: bold;
 }
+
+#transactionContent
+{
+  min-width: 500px;
+}
+
+#imageresult img
+{
+  width: 100%;
+}

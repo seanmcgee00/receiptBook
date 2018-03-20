@@ -1,17 +1,37 @@
 (function() {
 
-    var AccountController =  function($http,$cookies,$state,$scope,accountService) {
+    var AccountController =  function($http,$cookies,$state,$scope,accountService,translateService,transactionService) {
 
     var vm = this;
-  
+
     $scope.$emit('account', 'on account page');
     vm.showAccount=false;
     vm.viewAccount=function(account){getAccountInfo(account)};
+
+    $scope.$on('receiptItemsAuto', function(event, data) {
+      vm.receiptItems=data;
+     });
 
 
     vm.setPayment=function(payment){
       console.log(payment);
       vm.payment=payment;
+      vm.buttonControl=transactionService.getImage(vm.payment.id);
+      transactionService.getReceiptItems(vm.payment.id).then(function (result){
+        if(result!="not found")
+        {
+          vm.receiptItems=result;
+          console.log(vm.receiptItems);
+        }
+
+    });
+      console.log(vm.recieptItems);
+      console.log("the buttonControl is"+vm.buttonControl);
+
+    };
+
+    vm.deleteReceipt=function(){
+          vm.buttonControl=transactionService.deleteReceipt(vm.payment.id);
     };
 
     accountService.getCustomer().then(function (results) {
@@ -49,6 +69,7 @@
                accountService.getPayments(account.id).then(function (results) {
                   // console.log(results);
                    vm.payments=results.data.transfers;
+                   translateService.googleTranslateElementInit();
                        }, function (e) {
                            console.log(e);
                        });
@@ -58,5 +79,5 @@
 
 
   };
-    angular.module('receiptBookApp').controller('accountController', ['$http','$cookies','$state','$scope','accountService',AccountController]);
+    angular.module('receiptBookApp').controller('accountController', ['$http','$cookies','$state','$scope','accountService','translateService','transactionService',AccountController]);
 }());
