@@ -54,14 +54,26 @@
           }).then(function (result){
     //  console.log(result);
     //  console.log(result.data);
-        if(result.data=="successful upload"){
-        document.getElementById('resulting').innerHTML = "Fantastic";
-         transactionService.getImage(id);
-         transactionService.getReceiptItems(id).then(function (result){
-         $scope.$emit('receiptItemsAuto', result);
-             console.log(vm.receiptItems);
-       });
-        }
+            if(result.data=="successful upload"){
+            document.getElementById('resulting').innerHTML = "Fantastic";
+                transactionService.getImage(id).then(function (result){
+               //console.log(result);
+                        if(result!="not found")
+                          {
+                                var output = "<img id='receiptImage' src='data:image/png;base64,"+result+"' >";
+                                document.getElementById('imageresult').innerHTML = output;
+                                transactionService.getReceiptItems(id).then(function (result){
+                                $scope.$emit('receiptItemsAuto', result);
+                                    console.log(vm.receiptItems);
+                                  });
+
+
+                          }
+
+
+                        });
+
+            }
         });
       }
 

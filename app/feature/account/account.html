@@ -57,7 +57,7 @@
           <p>To Account:{{accountCtrl.payment.remoteAccount.name}} AccNumber:{{accountCtrl.payment.remoteAccount.number}}</p>
 				</div>
         <div id="imageresult"></div>
-        <div id="receiptItems">
+        <div ng-show="accountCtrl.showReceiptItem" id="receiptItems">
           <table class="table table-striped table-condensed">
             <thead>
               <tr>

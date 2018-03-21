@@ -19,3 +19,10 @@ a
 .panel-default {
      border-color: transparent !important;
 }
+#myLogo{
+width:100%;
+}
+#logoHolder
+{
+  width: 6%;
+}

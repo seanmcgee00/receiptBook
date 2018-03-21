@@ -14,6 +14,12 @@
        vm.intro=false;
       });
 
+      $scope.$on('customer', function(event, data) {
+        vm.customer=data;
+        console.log("the customer===================");
+        console.log(vm.customer);
+       });
+
 
     function checkforlogin()
     {
@@ -32,7 +38,7 @@
     vm.login=false;
     };
 
-  
+
 
 
 
