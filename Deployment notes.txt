@@ -1,0 +1,10 @@
+place the contents of The_Receipt_Book\Angular_Front_End\receiptBook into C:\xampp\htdocs\receiptBook.
+run xampp apache and mysql.
+admin the mysql and import receiptbook.sql.
+run The_Receipt_Book\mulesoft_project\AngularMulesoftapp\BOIProject in mulesoft
+update the bbva key in in the top API key variable.
+update the barer token (barer xxxx-xxxx-xxxx-xxxx) in the google api flow
+access the file on http://localhost/receiptbook/#/dashboard
+use the username and password from the sql to access an account.
+
+note, receipts must be cropped correctly
